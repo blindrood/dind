@@ -5,4 +5,5 @@ services:
 
 script:
 - docker build -t dind:1.0.0 .
-- docker push dind:1.0.0
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- docker push $DOCKER_USERNAME/dind:1.0.0
