@@ -3,7 +3,11 @@ language: python
 services:
 - docker
 
+env:
+ - IMAGE=dind
+ - VERSION="1.0.0"
+
 script:
-- docker build -t dind:1.0.0 .
+- docker build -t $DOCKER_USERNAME/$IMAGE:$VERSION .
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- docker push $DOCKER_USERNAME/dind:1.0.0
+- docker push $DOCKER_USERNAME/$IMAGE:$VERSION
