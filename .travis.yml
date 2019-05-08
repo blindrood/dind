@@ -1,0 +1,8 @@
+sudo: required
+language: python
+services:
+- docker
+
+script:
+- docker build -t dind:1.0.0 .
+- docker push dind:1.0.0
